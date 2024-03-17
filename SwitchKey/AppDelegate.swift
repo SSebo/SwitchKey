@@ -86,7 +86,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
         statusBarMenu.addItem(NSMenuItem.separator())
         launchAtStartupItem = statusBarMenu.addItem(withTitle: "Launch at login", action: #selector(menuDidLaunchAtStartupToggled), keyEquivalent: "")
-        launchAtStartupItem.state = LoginServiceKit.isExistLoginItems() ? .on : .off
+//        launchAtStartupItem.state = LoginServiceKit.isExistLoginItems() ? .on : .off
+        launchAtStartupItem.state = .on
         launchAtStartupItem.target = self
 
         statusBarMenu.addItem(withTitle: "Quit", action: #selector(menuDidQuitClicked), keyEquivalent: "").target = self
@@ -142,10 +143,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
     @objc private func menuDidLaunchAtStartupToggled() {
         if launchAtStartupItem.state == .on {
             launchAtStartupItem.state = .off
-            LoginServiceKit.removeLoginItems()
+//            LoginServiceKit.removeLoginItems()
         } else {
             launchAtStartupItem.state = .on
-            LoginServiceKit.addLoginItems()
+//            LoginServiceKit.addLoginItems()
         }
     }
 
